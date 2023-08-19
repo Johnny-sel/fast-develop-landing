@@ -1,18 +1,14 @@
-<p-megaMenu
-  [model]="items"
-  styleClass="flex"
-  orientation="horizontal"
-  
-
->
-  <ng-template pTemplate="start">
-    <img
-      src="../../assets/logo.png"
-      height="40"
-      class="mr-2"
-    />
-  </ng-template>
-  <!-- <ng-template pTemplate="end">
-    <input type="text" pInputText placeholder="Search" />
-  </ng-template> -->
-</p-megaMenu>
+<header class="flex justify-content-between p-3">
+  <img
+    src="../../assets//logo.png"
+    style="width: 42px; height: 42px"
+    alt="logo"
+    class="cursor-pointer"
+  />
+  <h1 class="text-center text-orange-600 pt-1">
+    {{ 'Free solutions for fast development' | titlecase }}
+  </h1>
+  <i class="pi pi-github text-5xl text-orange-500 text-right cursor-pointer">
+  </i>
+</header>
+<p-divider styleClass="p-0 m-0" />

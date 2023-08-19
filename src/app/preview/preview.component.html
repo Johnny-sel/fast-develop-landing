@@ -1,89 +1,56 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
-  <div class="mb-3 font-bold text-3xl">
-    <span class="text-900">One Product, </span>
-    <span class="text-blue-600">Many Solutions</span>
-  </div>
-  <div class="text-700 mb-6">
-    Ac turpis egestas maecenas pharetra convallis posuere morbi leo urna.
-  </div>
-  <div class="grid">
-    <div class="col-12 md:col-4 mb-4 px-5">
+<div class="px-4 py-2 md:px-6 lg:px-8 text-center">
+  <div class="grid mt-3">
+    <div *ngFor="let service of services" class="col-12 md:col-4 mb-4 px-5">
       <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        (click)="showDialog(service)"
+        class="p-3 shadow-2 mb-3 inline-block cursor-pointer relative"
         style="border-radius: 10px"
       >
-        <i class="pi pi-desktop text-4xl text-blue-500"></i>
+        <p-badge
+          *ngIf="service.isReady"
+          value="✓"
+          severity="success"
+          pTooltip="Ready to deploy"
+          tooltipPosition="left"
+          [style]="{position: 'absolute', right: '-10px', top: '-10px'}"
+        >
+        </p-badge>
+        <i class="pi text-4xl text-orange-500" [ngClass]="service.icon"> </i>
       </span>
-      <div class="text-900 text-xl mb-3 font-medium">Built for Developers</div>
-      <span class="text-700 line-height-3"
-        >Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur.</span
-      >
-    </div>
-    <div class="col-12 md:col-4 mb-4 px-5">
-      <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
-        style="border-radius: 10px"
-      >
-        <i class="pi pi-lock text-4xl text-blue-500"></i>
-      </span>
-      <div class="text-900 text-xl mb-3 font-medium">End-to-End Encryption</div>
-      <span class="text-700 line-height-3"
-        >Risus nec feugiat in fermentum posuere urna nec. Posuere sollicitudin
-        aliquam ultrices sagittis.</span
-      >
-    </div>
-    <div class="col-12 md:col-4 mb-4 px-5">
-      <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
-        style="border-radius: 10px"
-      >
-        <i class="pi pi-check-circle text-4xl text-blue-500"></i>
-      </span>
-      <div class="text-900 text-xl mb-3 font-medium">Easy to Use</div>
-      <span class="text-700 line-height-3">
-        Ornare suspendisse sed nisi lacus sed viverra tellus. Neque volutpat ac
-        tincidunt vitae semper.
-      </span>
-    </div>
-    <div class="col-12 md:col-4 mb-4 px-5">
-      <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
-        style="border-radius: 10px"
-      >
-        <i class="pi pi-globe text-4xl text-blue-500"></i>
-      </span>
-      <div class="text-900 text-xl mb-3 font-medium">Fast & Global Support</div>
-      <span class="text-700 line-height-3"
-        >Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum
-        tellus.</span
-      >
-    </div>
-    <div class="col-12 md:col-4 mb-4 px-5">
-      <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
-        style="border-radius: 10px"
-      >
-        <i class="pi pi-github text-4xl text-blue-500"></i>
-      </span>
-      <div class="text-900 text-xl mb-3 font-medium">Open Source</div>
-      <span class="text-700 line-height-3"
-        >Nec tincidunt praesent semper feugiat. Sed adipiscing diam donec
-        adipiscing tristique risus nec feugiat.
-      </span>
-    </div>
-    <div class="col-12 md:col-4 md:mb-4 mb-0 px-3">
-      <span
-        class="p-3 shadow-2 mb-3 inline-block surface-card"
-        style="border-radius: 10px"
-      >
-        <i class="pi pi-shield text-4xl text-blue-500"></i>
-      </span>
-      <div class="text-900 text-xl mb-3 font-medium">Trusted Securitty</div>
-      <span class="text-700 line-height-3"
-        >Mattis rhoncus urna neque viverra justo nec ultrices. Id cursus metus
-        aliquam eleifend.</span
-      >
+      <div class="text-900 text-xl mb-3 font-medium">{{ service.title }}</div>
+      <span class="text-700 line-height-3">{{ service.desc }}</span>
     </div>
   </div>
 </div>
+
+<p-dialog
+  *ngIf="selectedService"
+  [header]="selectedService.title"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{width: '90vw'}"
+  [draggable]="false"
+  [resizable]="false"
+  class="p-0 m-0"
+>
+  <p-tag *ngFor="let tag of selectedService.tags" class="mr-2">
+    {{ tag }}
+  </p-tag>
+
+  <div *ngIf="selectedService.content">
+    <p class="mt-3">
+      {{ selectedService.content || 'Coming soon...' }}
+    </p>
+    <p class="my-3 font-bold">Quick start:</p>
+    <div class="bg-gray-100 border-round p-3">
+      <ol class="list-decimal" *ngFor="let step of selectedService.startSteps">
+        <li class="my-2 cursor-auto">{{ step }}</li>
+      </ol>
+    </div>
+  </div>
+  <div *ngIf="!selectedService.content">
+    <p class="mt-3">
+      {{ selectedService.content || 'Coming soon...' }}
+    </p>
+  </div>
+</p-dialog>

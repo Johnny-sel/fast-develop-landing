@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HeaderComponent} from './header/header.component';
 import {ButtonModule} from 'primeng/button';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {InputTextModule} from 'primeng/inputtext';
@@ -17,15 +16,23 @@ import {AnimateModule} from 'primeng/animate';
 import {OverlayModule} from 'primeng/overlay';
 import {DataViewModule} from 'primeng/dataview';
 import {CardModule} from 'primeng/card';
-import {OfferComponent} from './offer/offer.component';
 import {PreviewComponent} from './preview/preview.component';
 import {DividerModule} from 'primeng/divider';
+import {PanelModule} from 'primeng/panel';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {ChipModule} from 'primeng/chip';
+import {DialogModule} from 'primeng/dialog';
+import {TagModule} from 'primeng/tag';
+import {BadgeModule} from 'primeng/badge';
+import {TooltipModule} from 'primeng/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    OfferComponent,
     PreviewComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +51,12 @@ import {DividerModule} from 'primeng/divider';
     DataViewModule,
     CardModule,
     DividerModule,
+    PanelModule,
+    ChipModule,
+    DialogModule,
+    TagModule,
+    BadgeModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

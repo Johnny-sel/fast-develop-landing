@@ -1,5 +1,10 @@
+@import 'normalize.scss';
+@import 'reset.scss';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+@import 'primeng/resources/themes/saga-orange/theme.css';
+@import 'primeng/resources/primeng.css';
 
 * {
-  // font-family: var(--font-family);
-  font-family: 'Play' !important;
+  font-family: var(--font-family);
 }
