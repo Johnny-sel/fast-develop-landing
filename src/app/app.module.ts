@@ -16,9 +16,17 @@ import {AutoFocusModule} from 'primeng/autofocus';
 import {AnimateModule} from 'primeng/animate';
 import {OverlayModule} from 'primeng/overlay';
 import {DataViewModule} from 'primeng/dataview';
-import { CardModule } from 'primeng/card';
+import {CardModule} from 'primeng/card';
+import {OfferComponent} from './offer/offer.component';
+import {PreviewComponent} from './preview/preview.component';
+import {DividerModule} from 'primeng/divider';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    OfferComponent,
+    PreviewComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,8 +42,8 @@ import { CardModule } from 'primeng/card';
     AnimateModule,
     OverlayModule,
     DataViewModule,
-    CardModule
-
+    CardModule,
+    DividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
